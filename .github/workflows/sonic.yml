@@ -35,9 +35,8 @@ jobs:
       - name: Install dependencies
         if: runner.os == 'Windows'
         run: choco install llvm -y
-      - name: into dir
-        run: cd sonic
       - name: Build sonic
+        run: cd sonic
         uses: actions-rs/cargo@v1
         with:
           command: build
