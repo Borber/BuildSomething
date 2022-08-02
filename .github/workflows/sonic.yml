@@ -59,13 +59,11 @@ jobs:
           cd archive
           if [ "${{ matrix.build }}" = "Windows" ]; then
             cp "../target/${{ matrix.target }}/release/sonic.exe" ./
-            tar -czf "${{ matrix.archive-name }}" sonic.exe
           else
             cp "../target/${{ matrix.target }}/release/sonic" ./
-            tar -czf "${{ matrix.archive-name }}" sonic
           fi
       - name: Upload archive
         uses: actions/upload-artifact@v1
         with:
           name: ${{ matrix.archive-name }}
-          path: archive/${{ matrix.archive-name }}
+          path: archive/*
