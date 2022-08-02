@@ -17,17 +17,17 @@ jobs:
             os: ubuntu-latest
             rust: nightly
             target: x86_64-unknown-linux-gnu
-            archive-name: sonic-linux.tar.gz
+            archive-name: sonic-linux
           - build: macOS
             os: macos-latest
             rust: nightly
             target: x86_64-apple-darwin
-            archive-name: sonic-macos.tar.gz
+            archive-name: sonic-macos
           - build: Windows
             os: windows-latest
             rust: nightly-x86_64-msvc
             target: x86_64-pc-windows-msvc
-            archive-name: sonic-windows.tar.gz
+            archive-name: sonic-windows
     steps:
       - uses: actions/checkout@v2
         with: 
