@@ -57,9 +57,9 @@ jobs:
         run: |
           mkdir archive
           cd archive
-          if [ "${{ matrix.build }}" = "windows" ]; then
+          if [ "${{ matrix.build }}" = "Windows" ]; then
             cp "../target/${{ matrix.target }}/release/sonic.exe" ./
-            zip -r "${{ matrix.archive-name }}" sonic.exe
+            zip "${{ matrix.archive-name }}" sonic.exe
           else
             cp "../target/${{ matrix.target }}/release/sonic" ./
             tar -czf "${{ matrix.archive-name }}" sonic
