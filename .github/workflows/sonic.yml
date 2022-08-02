@@ -27,7 +27,7 @@ jobs:
             os: windows-latest
             rust: nightly-x86_64-msvc
             target: x86_64-pc-windows-msvc
-            archive-name: sonic-windows.zip
+            archive-name: sonic-windows.tar.gz
     steps:
       - uses: actions/checkout@v2
         with: 
@@ -59,7 +59,7 @@ jobs:
           cd archive
           if [ "${{ matrix.build }}" = "Windows" ]; then
             cp "../target/${{ matrix.target }}/release/sonic.exe" ./
-            zip "${{ matrix.archive-name }}" sonic.exe
+            tar -czf "${{ matrix.archive-name }}" sonic.exe
           else
             cp "../target/${{ matrix.target }}/release/sonic" ./
             tar -czf "${{ matrix.archive-name }}" sonic
