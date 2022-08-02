@@ -1,6 +1,9 @@
 name: Sonic CI
 
-on: [push]
+on:
+  push:
+    tags:
+      - "sonic_v*.*.*"
 
 jobs: 
   build:
@@ -53,14 +56,13 @@ jobs:
         shell: bash
         run: |
           mkdir archive
-          cp LICENSE README.md archive/
           cd archive
           if [ "${{ matrix.build }}" = "windows" ]; then
             cp "../target/${{ matrix.target }}/release/sonic.exe" ./
-            zip -r "${{ matrix.archive-name }}" LICENSE README.md sonic.exe
+            zip -r "${{ matrix.archive-name }}" sonic.exe
           else
             cp "../target/${{ matrix.target }}/release/sonic" ./
-            tar -czf "${{ matrix.archive-name }}" LICENSE README.md cnoic
+            tar -czf "${{ matrix.archive-name }}" sonic
           fi
       - name: Upload archive
         uses: actions/upload-artifact@v1
