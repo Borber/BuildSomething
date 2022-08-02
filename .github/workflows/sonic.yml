@@ -21,7 +21,6 @@ jobs:
         uses: actions/checkout@v2
         with: 
           repository: valeriansaliou/sonic
-          path: sonic
       - name: Install rust
         uses: actions-rs/toolchain@v1
         with:
@@ -36,7 +35,6 @@ jobs:
         if: runner.os == 'Windows'
         run: choco install llvm -y
       - name: Build sonic
-        run: cd sonic
         uses: actions-rs/cargo@v1
         with:
           command: build
